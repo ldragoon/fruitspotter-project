@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Mark Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="cards-bg">
+
+		<div style="position: relative;">
+			<img src="{{ lat > 0 ? staticMapUrl : 'assets/img/mountain_clouds.png'}}" style="min-height: 234px;">
+      <ion-fab left top>
+				<button ion-fab color="{{ favorite === true ? 'primary' : 'gray' }}" class="fab-map" (click)="markFavorite()">
+					<ion-icon name="heart"></ion-icon>
+				</button>
+			</ion-fab>
+      <!--
+      <ion-fab right top>
+				<button ion-fab color="{{ reminder === true ? 'primary' : 'gray' }}" class="fab-map" (click)="setReminder()">
+					<ion-icon name="alarm"></ion-icon>
+				</button>
+			</ion-fab>
+      -->
+		</div>
+
+		<ion-item actions>
+			<span ion-text item-left color="secondary" class="item-bold">
+				Distance: {{ lat > 0 ? distance : '0' }} mi
+			</span>
+			<button ion-button clear item-right icon-left (click)="navigate()">
+				<ion-icon name='navigate'></ion-icon>
+				Navigate
+			</button>
+		</ion-item>
+
+		<ion-item>
+			<p *ngFor="let geo of geoaddress; let i=index">
+				{{ geo.address }}
+			</p>
+		</ion-item>
+
+    <ion-card-content>
+			<h2>
+				{{ fruit }} <span *ngIf="type"> - {{ type }}</span>
+			</h2>
+
+      <p>
+        {{ desc }}
+      </p>
+
+			<p ion-text color="secondary" style="padding-top: 15px; padding-bottom: 15px;">
+				<strong>
+					Added {{ createdTS | date: 'mediumDate' }}
+				</strong>
+			</p>
+
+			<p *ngIf="ripestart || ripeend">
+				Ripe: {{ ripestart | date: 'longDate' }} <span *ngIf="ripeend">- {{ ripeend | date: 'longDate' }}</span>
+			</p>
+    </ion-card-content>
+
+		<ion-row>
+			<ion-col>
+				<button ion-button icon-left clear small (click)="edit()">
+					<ion-icon name="create"></ion-icon>
+					<div>Edit</div>
+				</button>
+			</ion-col>
+			<ion-col center text-right>
+				<button ion-button icon-left clear small color="danger" (click)="delete()">
+        	<ion-icon name="trash"></ion-icon>
+        	<div>Delete</div>
+      	</button>
+			</ion-col>
+		</ion-row>
+  </ion-card>
+
+</ion-content>

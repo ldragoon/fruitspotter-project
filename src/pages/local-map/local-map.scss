@@ -1,0 +1,14 @@
+page-local-map {
+	ion-list {
+		border-bottom: 1px solid color($colors, gray) !important;
+	}
+
+	.scroll-content {
+		height: 100% !important;
+	}
+
+	#map {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}

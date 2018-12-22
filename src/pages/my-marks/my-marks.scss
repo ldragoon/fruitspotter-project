@@ -1,0 +1,66 @@
+page-my-marks {
+
+	ion-content {
+		background-color: lighten(color($colors, primary), 20%) !important;
+
+		p {
+			color: color($colors, dark);
+		}
+	}
+
+	ion-list {
+
+		ion-item-divider {
+			padding: 5px 10px 0 20px !important;
+			text-transform: capitalize !important;
+			background-color: lighten(color($colors, light), 2%) !important;
+		}
+
+		ion-item {
+
+			padding: 12px !important;
+
+			ion-note {
+				font-size: 20px !important;
+				color: color($colors, dark) !important;
+
+				div {
+					background-size: contain;
+					background-repeat: no-repeat;
+					height: 40px !important;
+					width: 40px !important;
+				}
+
+				.bush {
+					background-image: url('../assets/icon/bush.png');
+				}
+
+				.herb {
+					background-image: url('../assets/icon/herb.png');
+				}
+
+				.tree {
+					background-image: url('../assets/icon/tree.png');
+				}
+
+				.vine {
+					background-image: url('../assets/icon/vine.png');
+				}
+
+				.weed {
+					background-image: url('../assets/icon/weed.png');
+				}
+			}
+
+			span {
+				font-size: 15px !important;
+				color: darken(color($colors, secondary), 10%) !important;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+}

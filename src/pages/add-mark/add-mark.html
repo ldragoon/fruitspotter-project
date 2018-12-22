@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+        {{ mark.id ? 'Update' : 'Add' }} Mark
+    </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="close()">
+              <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="add-mark">
+    <input type="hidden" [(ngModel)]="mark.id" />
+		<input type="hidden" [(ngModel)]="mark.updateTS" />
+		<input type="hidden" [(ngModel)]="mark.createdTS" />
+
+		<ion-item>
+			<ion-label>Favorite</ion-label>
+			<ion-toggle [(ngModel)]="mark.favorite" color="primary"></ion-toggle>
+		</ion-item>
+
+		<!--
+    <ion-item>
+			<ion-label>Share with friends</ion-label>
+			<ion-toggle [(ngModel)]="mark.share" color="primary"></ion-toggle>
+		</ion-item>
+    -->
+
+    <ion-item>
+      <ion-label fixed>Fruit</ion-label>
+      <ion-input type="text" [(ngModel)]="mark.fruit" placeholder=""></ion-input>
+    </ion-item>
+
+		<ion-item>
+			<ion-label fixed>Type</ion-label>
+			<ion-select [(ngModel)]="mark.type">
+				<ion-option value="tree">Tree</ion-option>
+				<ion-option value="bush">Bush</ion-option>
+				<ion-option value="herb">Herb</ion-option>
+				<ion-option value="weed">Weed</ion-option>
+				<ion-option value="vine">Vine</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-card>
+				<ion-card-header>
+						<strong>
+						Location Information
+					</strong>
+				</ion-card-header>
+				<ion-card-content>
+					<button ion-button item-right icon-left (click)="updateLocation()">
+							<ion-icon name="pin"></ion-icon>
+							Update Location
+					</button>
+
+					<h2 *ngIf="mark.lat !== undefined">
+						Position: {{ mark.lat }}, {{ mark.lng }}
+					</h2>
+
+					<p *ngIf="error">
+						{{ error }}
+					</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-item>
+
+		<!---
+    <ion-item>
+			<ion-label>Ripe Start</ion-label>
+			<ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="mark.ripestart"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Ripe End</ion-label>
+			<ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="mark.ripeend"></ion-datetime>
+		</ion-item>
+    --->
+
+    <ion-item>
+			<ion-label stacked>Notes</ion-label>
+      <ion-textarea type="text" [(ngModel)]="mark.desc" placeholder="Leave a note!"></ion-textarea>
+    </ion-item>
+
+		<!--
+    <ion-item>
+			<ion-label>Remind Me</ion-label>
+			<ion-toggle [(ngModel)]="mark.reminder" color="primary"></ion-toggle>
+		</ion-item>
+
+		<ion-list no-lines>
+			<ion-item>
+				<ion-label>Notify me at: </ion-label>
+				<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="notifyTime" (ionChange)="timeChange($event)"></ion-datetime>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>on the following days:</ion-label>
+			</ion-item>
+
+			<ion-item *ngFor="let day of days">
+				<ion-label>{{day.title}}</ion-label>
+				<ion-checkbox [(ngModel)]="day.checked" color="primary"></ion-checkbox>
+			</ion-item>
+
+		</ion-list>
+
+		<button (click)="addNotifications()" ion-button color="primary" full>Schedule</button>
+		<button (click)="cancelAll()" ion-button color="danger" full>Leave me alone!</button>
+		--->
+
+    <p>
+			<button full ion-button color="primary" (click)="addMark(mark, $event)">
+				{{ mark.id ? 'Update' : 'Add' }} Mark
+    	</button>
+		</p>
+
+</ion-content>

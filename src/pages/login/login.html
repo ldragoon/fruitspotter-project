@@ -1,0 +1,48 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			Login
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form #loginForm="ngForm" novalidate>
+		<ion-item>
+			<ion-label stacked>Email</ion-label>
+			<ion-input [(ngModel)]="login.email" name="email" type="email" #email="ngModel" required></ion-input>
+		</ion-item>
+		<p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+			Email is required
+		</p>
+
+		<ion-item>
+			<ion-label stacked>Password</ion-label>
+			<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+			</ion-input>
+		</ion-item>
+		<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+			Password is required
+		</p>
+
+		<p>
+			<button ion-button (click)="onLogin(loginForm)" color="primary" type="submit" block>
+				Login
+			</button>
+		</p>
+
+		<p>
+			<ion-buttons text-center start>
+				<button ion-button small outline color="secondary" type="button" (click)="createAccount()">
+					Create Account
+				</button>
+				<button ion-button small outline color="secondary" type="button" (click)="goToResetPassword()">
+					Forgot Password
+				</button>
+			</ion-buttons>
+		</p>
+	</form>
+</ion-content>

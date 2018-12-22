@@ -1,0 +1,114 @@
+<!--
+  Generated template for the MyMarks page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+
+  https://www.djamware.com/post/585476a280aca7060f443064/ionic-2-firebase-crud-example-part-1
+  https://javebratt.com/searchbar-firebase/
+    https://github.com/javebratt/searchbar-firebase
+  https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
+  https://ionicframework.com/docs/v2/components/#searchbar
+  https://github.com/angular/angularfire2/issues/558
+
+	http://stackoverflow.com/questions/40678206/angular-2-filter-search-list
+
+  http://briantroncone.com/?p=623
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      My Marks
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="add()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-searchbar
+  (ionInput)="filterMarks($event)"
+  (ionCancel)="onCancel()"
+  (ionClear)="onClear()"
+	[showCancelButton]="true"
+	[autocomplete]="on"
+	[autocorrect]="on"
+  [type]="search"></ion-searchbar>
+
+  <p *ngIf="filteredMarks.length > 0">
+		Results: {{ filteredMarks.length }}
+	</p>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let mark of filteredMarks; let i=index; let even=even; let odd=odd">
+      <ion-item (click)="view(mark)" [ngClass]="{ odd: odd, even:even }">
+        <ion-note item-left>
+          <div class="{{ mark.type }}">
+            &nbsp;
+          </div>
+        </ion-note>
+        <span>{{ mark.fruit }}</span>
+        <ion-icon *ngIf="mark.favorite === true" name="heart" color="secondary" item-right></ion-icon>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="markFavorite(mark.key)">
+          {{ mark.favorite === true ? "Unfavorite" : "Favorite" }}
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="right">
+        <button ion-button color="secondary" icon-left (click)="edit(mark)">
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+
+        <button ion-button color="danger" icon-left (click)="delete(mark.key)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <p *ngIf="(marks | async)?.length > 0 && filteredMarks.length === 0">
+		Results: {{ (marks | async)?.length }}
+	</p>
+
+  <ion-list *ngIf="filteredMarks.length === 0">
+		<ion-item-sliding *ngFor="let mark of marks | async; let i=index; let even=even; let odd=odd">
+        <ion-item (click)="view(mark)" [ngClass]="{ odd: odd, even: even }">
+		      <ion-note item-left>
+						<div class="{{ mark.type }}">
+							&nbsp;
+						</div>
+					</ion-note>
+					<span>{{ mark.fruit }}</span>
+					<ion-icon *ngIf="mark.favorite === true" name="heart" color="secondary" item-right></ion-icon>
+		    </ion-item>
+
+				<ion-item-options side="left">
+					<button ion-button color="primary" (click)="markFavorite(mark.key)">
+	          {{ mark.favorite === true ? "Unfavorite" : "Favorite" }}
+	        </button>
+				</ion-item-options>
+
+				<ion-item-options side="right">
+	        <button ion-button color="secondary" icon-left (click)="edit(mark)">
+	          <ion-icon name="create"></ion-icon>
+	          Edit
+	        </button>
+
+					<button ion-button color="danger" icon-left (click)="delete(mark.key)">
+	          <ion-icon name="trash"></ion-icon>
+	          Delete
+	        </button>
+				</ion-item-options>
+		</ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

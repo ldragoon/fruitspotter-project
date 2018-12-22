@@ -1,0 +1,113 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title text-center>
+			Dashboard
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="logOutPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card-content>
+		<h1 text-center>
+			Welcome Home
+		</h1>
+
+		<h1 text-center>
+			<ion-icon name="heart"></ion-icon>
+		</h1>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col width-50 text-center class="pink" (click)="add($event)">
+					<ion-icon name="locate" style="font-size: 60px; color: white;"></ion-icon>
+					<h3>
+						Add a Mark
+					</h3>
+				</ion-col>
+
+				<ion-col width-50 text-center class="blue" (click)="myMarks($event)">
+					<ion-icon name="search" style="font-size: 60px; color: white;"></ion-icon>
+					<h3>
+						My Marks
+					</h3>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col width-50 text-center class="blue" (click)="map($event)">
+					<ion-icon name="map" style="font-size: 60px; color: white;"></ion-icon>
+					<h3>
+						View Map
+					</h3>
+				</ion-col>
+
+				<!---
+				<ion-col width-50 text-center class="pink" (click)="friends($event)">
+					<ion-icon name="contacts" style="font-size: 60px; color: white;"></ion-icon>
+					<h3>
+						My Friends
+					</h3>
+				</ion-col>
+				--->
+
+				<ion-col width-50 text-center class="pink"></ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!---
+		<div *ngFor="let test of testMarks">
+			{{ test.$key }}
+
+			{{ test.$key.email }}
+		</div>
+
+		<span *ngIf="sent === 0">
+			<ion-list-header color="primary" style="margin: 20px 0 0 0;">
+				New Friends
+			</ion-list-header>
+			<ion-list *ngFor="let request of friendRequestList | async">
+				<ion-item (click)="friendBack($event, request.sentFrom)">
+					{{ request.sentFrom }}
+					<ion-note item-right>
+						Friend Back
+					</ion-note>
+				</ion-item>
+			</ion-list>
+		</span>
+
+		<ion-list id="header" *ngIf="numberReminders > 0">
+			<ion-list-header color="primary">
+				<ion-icon name="alarm" item-right></ion-icon>
+				Upcoming Reminders
+			</ion-list-header>
+		</ion-list>
+		<ion-list *ngFor="let reminder of myReminders; let odd = odd; let even = even" [class.odd]="odd" [class.even]="even">
+			<ion-item *ngIf="reminder.reminder === true && (reminder.ripestart >= today && reminder.ripestart <= nextMonth)" (click)="viewMark(reminder)">
+				{{ reminder.fruit }}
+				<ion-note item-right>
+					{{ reminder.ripestart | date: 'shortDate' }}
+				</ion-note>
+			</ion-item>
+		</ion-list>
+
+		<ion-item-group *ngFor="let group of groupedMarks; let i = index;">
+			<ion-item-divider light>
+				{{ group.type }}
+			</ion-item-divider>
+			<ion-item (click)="viewMark(mark, i)" *ngFor="let mark of group.marks">
+				<span>
+					{{ mark.fruit }}
+				</span>
+				<ion-icon *ngIf="mark.favorite === true" name="heart" color="secondary" item-right></ion-icon>
+				<ion-icon *ngIf="mark.reminder === true" name="alarm" color="secondary" item-right></ion-icon>
+			</ion-item>
+		</ion-item-group>
+		--->
+
+	</ion-card-content>
+</ion-content>

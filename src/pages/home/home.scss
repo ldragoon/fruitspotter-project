@@ -1,0 +1,77 @@
+page-home {
+	ion-content {
+    background-color: lighten(color($colors, primary), 20%) !important;
+
+    h1 {
+      font-size: 40px;
+      color: color($colors, secondary);
+  		font-family: 'Pacifico', sans-serif !important;
+
+      ion-icon {
+        font-size: 80px;
+			}
+    }
+
+    ion-grid {
+      height: 50% !important;
+    	padding-top: 10px !important;
+
+      .pink {
+        display: table-cell;
+        padding: 10px;
+
+        color: white;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: color($colors, primary);
+        text-shadow: 0 0 8px darken(color($colors, primary), 30%);
+
+        h3 {
+          font-size: 20px;
+        }
+      }
+
+      .blue {
+        display: table-cell;
+        padding: 10px;
+
+        color: white;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: color($colors, secondary);
+        text-shadow: 0 0 8px darken(color($colors, secondary), 30%);
+
+        h3 {
+          font-size: 20px;
+        }
+      }
+    }
+
+		ion-list {
+			&#header {
+				margin-top: 20px !important;
+			}
+
+			margin: 0 !important;
+
+			ion-note {
+				color: darken(color($colors, secondary), 10%) !important;
+			}
+
+			&.odd {
+				ion-item {
+					background-color: lighten(color($colors, primary), 15%) !important;
+				}
+			}
+
+			ion-list-header {
+				margin: 0 !important;
+				border: 1px solid darken(color($colors, secondary), 5%) !important;
+			}
+
+			ion-item {
+				border-bottom: 1px solid color($colors, gray) !important;
+			}
+		}
+	}
+}

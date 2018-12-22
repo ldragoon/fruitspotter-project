@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+					Local Map
+				</ion-title>
+				<ion-buttons end>
+		      <button ion-button outline icon-left (click)="addMark($event)">
+		        <ion-icon name="add"></ion-icon>
+		        Add Marker
+		      </button>
+		    </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list inset>
+		<ion-item>
+			<ion-input id="autocomplete" type="text" name="title" placeholder="Enter Address"></ion-input>
+		</ion-item>
+	</ion-list>
+
+  <agm-map id="map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" (mapClick)="mapClicked($event)">
+
+    <!---
+    Just current location
+    <agm-marker [latitude]="map.lat" [longitude]="map.lng">
+        <agm-info-window>
+            <strong>My current location</strong>
+        </agm-info-window>
+    </agm-marker>
+    --->
+
+    <agm-marker *ngFor="let temp of tempMark; let i = index"
+      [latitude]="temp.lat"
+      [longitude]="temp.lng"
+      (markerClick)="clickedMarker(map.label, i)"
+      [iconUrl]="myIcon"
+      [markerDraggable]="map.draggable"
+      (dragEnd)="markerDragEnd($event)">
+
+      <agm-info-window [isOpen]="temp.start">
+          <strong>
+            {{ map.label }}
+          </strong>
+      </agm-info-window>
+    </agm-marker>
+
+    <agm-marker
+      *ngFor="let m of marks | async; let i = index"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      (markerClick)="clickedMarker(m.fruit, i)">
+        <agm-info-window>
+            <strong>
+              {{ m.fruit }}
+            </strong>
+        </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+</ion-content>

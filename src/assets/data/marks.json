@@ -1,0 +1,19 @@
+{
+  "marks": [
+    {
+      "createdTS": "2017-03-03T23:21:21.355Z",
+      "desc": "A happy note of happiness",
+      "favorite": false,
+      "fruit": "Blackberries",
+      "id": "-KeLTf-sCaJJlgMRnp6W",
+      "lat": 38.5497849,
+      "lng": -121.71534709999999,
+      "reminder": true,
+      "ripeend": "2017-03-04",
+      "ripestart": "2017-02-12",
+      "share": false,
+      "type": "bush",
+      "updateTS": "2017-03-09T18:14:05.754Z"
+    }
+  ]
+}
